@@ -1,0 +1,12 @@
+.simple_box {
+	padding: 10px;
+	margin: 10px;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+
+.outer_box {
+	padding: 15px;
+	margin: 15px;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}

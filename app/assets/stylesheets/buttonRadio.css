@@ -1,0 +1,54 @@
+input[type="radio"] {
+  display: none;
+}
+.button-style-label {
+  display : inline-block;
+  background: #DDDDDD;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.date-detail {
+  display : inline-block;
+  background: #DDDDDD;
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.button-style-label:hover {
+  opacity: .8;
+}
+.date-detail:hover {
+  opacity: .8;
+}
+
+input[type="radio"]:checked + .button-style-label {
+  background: #0063A4;
+  color: #FFF;
+}
+
+input[type="radio"]:checked + .date-detail {
+  background: #0063A4;
+  color: #FFF;
+}
+
+input[type="radio"]:disabled + .button-style-label {
+  opacity: .4;
+  cursor: default;
+}
+
+input[type="radio"]:disabled + .date-detail {
+  opacity: .4;
+  cursor: default;
+}
+

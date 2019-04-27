@@ -1,0 +1,206 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<ul class="stepNav threeWide">
+  <li><a href="" title="">検索</a></li>
+    <li><a href="" title="">空車を確認</a></li>
+    <li class="selected"><a href="" title="">予約する</a></li>
+</ul>
+
+<div class="container">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+    <div class="outer_box" >
+	    <h2 style="text-align: center;,font-weight: 200;">
+	    		ステップ 3/3
+	    </h2>
+		<hr>
+		<%= form_for @order,url: user_orders_path(user_id: params[:user_id]) do |f|  %>
+		<div class="simple_box" >
+		  	<div class="radio-buttons">
+		    	<table>
+		    		<div><h4 class="btn-works">場所に該当する地区を選択してください</h4></div>
+		      	<tr><%= f.label :場所の地区 %>
+		      		<%= f.radio_button :work_place_range, {} %><br />
+		        	<td>
+			          	<input type="radio" name="work_place_range" id="place_1" value="名古屋市内" checked>
+			          	<label class="button-style-label" for="place_1">名古屋市内</label>
+		        	</td>
+			        <td>
+			          	<input type="radio" name="work_place_range" id="place_2" value="名古屋市外">
+			          	<label class="button-style-label" for="place_2">名古屋市外</label>
+			        </td>
+			        <td>
+			          	<input type="radio" name="work_place_range" id="place_3" value="愛知県内">
+			          	<label class="button-style-label" for="place_3">愛知県内</label>
+			        </td>
+		        	<td>
+			          	<input type="radio" name="work_place_range" id="place_4" value="東海地方">
+			          	<label class="button-style-label" for="place_4">東海地方</label>
+		        	</td>
+			        <td>
+			          	<input type="radio" name="work_place_range" id="place_5" value="それ以外">
+			          	<label class="button-style-label" for="place_5">それ以外</label>
+			        </td>
+		      	</tr>
+		    	</table>
+		  	</div>
+			<div>
+				<div><h4 class="btn-works">場所の詳細を記入してください</h4></div>
+				<%= f.label :場所詳細 %>
+				<%= f.text_field :work_place, class:"form-control input-lg",placeholder: " 例) 愛知県名古屋市千種区〇〇町" %>
+		  	</div>
+		</div>
+		<div class="simple_box" >
+		<div class="radio-buttons">
+		    <table>
+		    	<div><h4 class="btn-works">日時を選択してください</h4></div>
+		    	<%= f.label :日時 %>
+		    	<div style="text-align: center;">
+		    		<h4 class="btn-start">開始</h4>
+		    	</div>
+		      	<tr>
+			      	<td>
+			      		<div>
+				      		<%= raw sprintf(
+				              	f.date_select(
+				                  :start_date,
+				                  use_month_numbers: true,
+				                  start_year:        Date.today.year,
+				                  default:           Date.today,
+				                  date_separator:    '%s'), # 年月日区切りをそれぞれ指定
+				              '年 ', '月 ') + ' 日　'
+				   			%>
+			   			</div>
+			      	</td>
+			      	<%= f.radio_button :start_date_detail, {} %><br />
+			        <td>
+			          	<input type="radio" name="start_date_detail" id="am_1" value="午前１" checked>
+			          	<label class="date-detail" for="am_1">午前①</label>
+			        </td>
+			        <td>
+			          	<input type="radio" name="start_date_detail" id="am_2" value="午前２">
+			          	<label class="date-detail" for="am_2">午前②</label>
+			        </td>
+		      	</tr>
+		    </table>
+	  	</div>
+
+		<div class="radio-buttons">
+		    <table>
+		    	<div style="text-align: center;">
+		    		<div><h4 class="btn-finish">終了</h4></div>
+		    	</div>
+		      	<tr>
+			      	<td>
+			      		<div>
+				      		<%= raw sprintf(
+				              f.date_select(
+				                  :finish_date,
+				                  use_month_numbers: true,
+				                  start_year:        Date.today.year,
+				                  default:           Date.today,
+				                  date_separator:    '%s'),
+				                   # 年月日区切りをそれぞれ指定
+				              '年 ', '月 ') + ' 日　'
+				   			%>
+			   			</div>
+			      	</td>
+			      		<%= f.radio_button :finish_date_detail, {} %><br />
+			        <td>
+			          	<input type="radio" name="finish_date_detail" id="pm_1" value="午後１" checked>
+			          	<label class="date-detail" for="pm_1">午後①</label>
+			        </td>
+			        <td>
+			          	<input type="radio" name="finish_date_detail" id="pm_2" value="午後２">
+			          	<label class="date-detail" for="pm_2">午後②</label>
+			        </td>
+		      	</tr>
+		    </table>
+	  	</div>
+	  	</div>
+
+	  	<div class="simple_box" >
+	  	<div class="radio-buttons">
+	    <table>
+		      	<tr>
+		    		<div><h4 class="btn-works">車種を選択してください</h4></div>
+		      	<%= f.label :必要な車種はどちらになりますか？ %>
+		      	<%= f.radio_button :car_type, {} %><br />
+			        <td>
+			          <input type="radio" name="car_type" id="car_1" value="4t車" checked>
+			          <label class="button-style-label" for="car_1">4t車</label>
+			        </td>
+			        <td>
+			          <input type="radio" name="car_type" id="car_2" value="ユニット車">
+			          <label class="button-style-label" for="car_2">ユニット車</label>
+			        </td>
+			        <td>
+			          <input type="radio" name="car_type" id="car_3" value="10t車">
+			          <label class="button-style-label" for="car_3">10t車</label>
+			        </td>
+			        <td>
+			          <input type="radio" name="car_type" id="car_4" value="2t車">
+			          <label class="button-style-label" for="car_4">2t車</label>
+			        </td>
+		      	</tr>
+		    </table>
+	  	</div>
+
+	    <div class="radio-buttons">
+	    	<table>
+	      		<tr>
+		    		<div><h4 class="btn-works">内容を選択してください</h4></div>
+	      		<%= f.label :今回はどのような件でしょうか？ %>
+	      		<%= f.radio_button :work_type, {} %><br />
+			        <td>
+			          	<input type="radio" name="work_type" id="work_1" value="設置" checked>
+			          	<label class="button-style-label" for="work_1">設置</label>
+			        </td>
+			        <td>
+			         	<input type="radio" name="work_type" id="work_2" value="交換">
+			          	<label class="button-style-label" for="work_2">交換</label>
+			        </td>
+			        <td>
+			          	<input type="radio" name="work_type" id="work_3" value="引き上げ">
+			          	<label class="button-style-label" for="work_3">引き上げ</label>
+			        </td>
+	      		</tr>
+	    	</table>
+	  	</div>
+
+	    <div class="radio-buttons">
+	    	<table>
+		      	<tr>
+		      	<div>
+		      	<h4 class="btn-works">	積み込み作業の有無を選択してください
+		      	</h4>
+		    	</div>
+		      	<%= f.label :積み込み作業はございますか？ %>
+		      	<%= f.radio_button :loading_work, {} %><br />
+			        <td>
+			          	<input type="radio" name="loading_work" id="loading_1" value= true checked>
+			          	<label class="button-style-label" for="loading_1">あり</label>
+			        </td>
+			        <td>
+			          	<input type="radio" name="loading_work" id="loading_2" value= false>
+			          	<label class="button-style-label" for="loading_2">なし</label>
+			        </td>
+		      	</tr>
+	    	</table>
+	  	</div>
+	  		<div class="column">
+			    <div class="input-text">
+			    	<%= f.label :備考　%>
+			  		<%= f.text_area :attention %>
+				</div>
+			</div>
+	  	</div>
+
+　　　　　<p style="color:red;,font-weight:200;,text-align: center">※下の「予約する」のボタンを押すと予約が確定します。</p>
+		<%= f.submit '予約する', class: 'btn btn-primary btn-lg btn-block' %>
+		<% end %>
+	</div>
+	</div>
+</div>
+

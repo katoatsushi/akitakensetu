@@ -1,0 +1,35 @@
+.btn-start {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #3399FF;
+  background: #D9E5FF;/*色*/
+  border-radius: 4px;/*角の丸み*/
+  font-weight: bold;
+  border: solid 2px #3399FF;/*線色*/
+}
+
+.btn-finish {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #B22222;
+  background: #FFC0CB;/*色*/
+  border-radius: 4px;/*角の丸み*/
+  font-weight: bold;
+  border: solid 2px #B22222;/*線色*/
+}
+
+.btn-works {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #32CD32;
+  background: #CBFFD3;/*色*/
+  border-radius: 4px;/*角の丸み*/
+  font-weight: bold;
+  border: solid 2px #32CD32;/*線色*/
+}
